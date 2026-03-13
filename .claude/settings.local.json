@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\Users\\\\Edson Cruz\\\\Documents\\\\pessoal\\\\collab\" && npm install @tailwindcss/vite)",
+      "Bash(cd \"C:\\\\Users\\\\Edson Cruz\\\\Documents\\\\pessoal\\\\collab\" && npm install @tailwindcss/vite --legacy-peer-deps)"
+    ]
+  }
+}
