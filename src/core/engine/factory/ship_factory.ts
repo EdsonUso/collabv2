@@ -1,5 +1,6 @@
-import type { Ship } from "./entities/types";
-import { PHYSICS } from "./simulation_config";
+import type { Ship } from "../entities/types";
+import { PHYSICS } from "../simulation_config";
+
 
 let shipId = 1000;
 

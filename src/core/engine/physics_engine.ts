@@ -8,8 +8,8 @@ export function applyDamping(entity: BaseEntity): void {
 }
 
 export function integrate(entity: BaseEntity): void {
-    entity.pos.x = entity.vel.x;
-    entity.pos.y = entity.vel.y;
+    entity.pos.x += entity.vel.x;
+    entity.pos.y += entity.vel.y;
 }
 
 export function applyBoundary(entity: BaseEntity, w: number, h: number): void {
@@ -41,7 +41,7 @@ export function clampSpeed(entity: BaseEntity): void {
     if (speed > PHYSICS.maxSpeed) {
         const n = vec2.norm(entity.vel)
         entity.vel.x = n.x * PHYSICS.maxSpeed;
-        entity.vel.x = n.y * PHYSICS.maxSpeed;
+        entity.vel.y = n.y * PHYSICS.maxSpeed;
     }
 }
 

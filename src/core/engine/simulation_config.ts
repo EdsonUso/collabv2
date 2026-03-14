@@ -4,7 +4,7 @@ export const PHYSICS = {
   collisionElasticity: 0.85,
   boundaryBounce: 0.7,
   maxSpeed: 12,
- 
+
   alien: {
     driftForce: 0.008,
     rotationSpeed: 0.01,
@@ -12,7 +12,7 @@ export const PHYSICS = {
     baseRadius: { min: 18, max: 28 },
     baseMass: { min: 1, max: 1.5 },
   },
- 
+
   ship: {
     aiSpeed: 1.2,
     playerAccel: 0.24,
@@ -23,7 +23,7 @@ export const PHYSICS = {
     playerFireRate: 12,
     hp: 5,
   },
- 
+
   projectile: {
     speed: 7,
     maxLife: 180,
@@ -31,19 +31,19 @@ export const PHYSICS = {
     trailLength: 8,
     knockback: 3,
   },
- 
+
   spawn: {
     minAliveCount: 3,
     respawnDelay: 120,
     edgeMargin: 30,
   },
 } as const;
- 
+
 export const GAME_CONFIG = {
   targetFPS: 60,
-  starDensity: 3000,   
+  starDensity: 700,
   alienDensity: 40000,
   scorePerKill: 100,
 } as const;
- 
+
 export type AlienType = 0 | 1 | 2 | 3;

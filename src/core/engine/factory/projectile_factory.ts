@@ -1,5 +1,6 @@
-import type { Projectile } from "./entities/types";
-import { PHYSICS } from "./simulation_config";
+import type { Projectile } from "../entities/types";
+import { PHYSICS } from "../simulation_config";
+
 
 
 let projId = 5000;

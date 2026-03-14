@@ -1,5 +1,5 @@
-import type { Alien } from "./entities/types";
-import { PHYSICS, type AlienType } from "./simulation_config";
+import type { Alien } from "../entities/types";
+import { PHYSICS, type AlienType } from "../simulation_config";
 
 let nextId = 0;
 export const resetAlienIdCounter = () => { nextId = 0 };
