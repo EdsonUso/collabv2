@@ -1,20 +1,39 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import { ThemeToggle } from "../ThemeToggle"
 import { ArrowRight, Lock, Mail } from "lucide-react"
 import { Button } from "../ui/button"
 import { SocialLogin } from "./SocialLogin"
+import { useAuth } from "@/contexts/AuthContext"
+import { PATHS } from "@/routes/paths"
+import { AxiosError } from "axios"
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [focusedField, setFocusedField] = useState<string | null>(null)
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsLoading(false)
+    setError(null)
+
+    try {
+      await login({ email, password })
+      navigate(PATHS.HOME)
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        setError(err.response?.data?.message ?? "Erro ao fazer login.")
+      } else {
+        setError("Erro ao fazer login.")
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -43,6 +62,12 @@ export default function LoginForm() {
           <h1 className="text-3xl font-bold text-foreground tracking-tight">Collab</h1>
           <p className="text-muted-foreground mt-2">Onde talentos se conectam</p>
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm text-center">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
@@ -167,9 +192,9 @@ export default function LoginForm() {
 
         <p className="text-center text-sm text-muted-foreground mt-10">
           Novo por aqui?{" "}
-          <a href="/signup" className="text-primary hover:underline font-medium">
+          <Link to={PATHS.REGISTER} className="text-primary hover:underline font-medium">
             Criar Conta
-          </a>
+          </Link>
         </p>
       </div>
     </div>
